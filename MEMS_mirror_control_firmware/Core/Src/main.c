@@ -389,6 +389,10 @@ void HAL_SYSTICK_Callback(void)
 			new_CaptureNumber = new_CaptureNumber + CaptureNumber;
 			__HAL_TIM_SET_AUTORELOAD(&htim6,new_CaptureNumber);
 		}
+		else if((Direction == 1) && (CaptureNumber != 0)) {
+			new_CaptureNumber = new_CaptureNumber - (4294967295-CaptureNumber);
+			__HAL_TIM_SET_AUTORELOAD(&htim6,new_CaptureNumber);
+		}		
 		__HAL_TIM_SET_COUNTER(&htim2,0);		
 	}
 
